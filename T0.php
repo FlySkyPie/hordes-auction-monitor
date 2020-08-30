@@ -2,8 +2,8 @@
 require './vendor/autoload.php';
 
 use Carbon\Carbon;
-use Medoo\Medoo;
 use LucidFrame\Console\ConsoleTable;
+use Medoo\Medoo;
 
 // Create database
 $database = new Medoo([
@@ -130,13 +130,25 @@ foreach ($tradingVolumes as $key => $tradingVolume) {
     $rows[] = $tradingVolume;
 }
 
-for ($i = 0; $i < count($headers) / 10; $i++) {
-    $table = new ConsoleTable();
-    $table
-        ->setHeaders(array_merge(["Price"], array_slice($headers, $i * 10, 10)))
-        ->addRow(array_merge(["Trading Volume"], array_slice($rows, $i * 10, 10)))
-        ->display();
+$table = new ConsoleTable();
+$rowCount = intval(ceil(count($headers) / 10));
+for ($i = 0; $i < $rowCount; $i++) {
+    if ($i === 0) {
+        $table
+            ->setHeaders(array_merge(["Price"], array_slice($headers, $i * 10, 10)))
+            ->addRow(array_merge(["Trading Volume"], array_slice($rows, $i * 10, 10)));
+    } else {
+        $table
+            ->addRow(array_merge(["Price"], array_slice($headers, $i * 10, 10)))
+            ->addBorderLine()
+            ->addRow(array_merge(["Trading Volume"], array_slice($rows, $i * 10, 10)));
+    }
+
+    if ($i !== ($rowCount - 1)) {
+        $table->addBorderLine();
+    }
 }
+$table->display();
 print("\n");
 //printStatistic($tradingVolumes);
 
