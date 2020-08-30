@@ -18,7 +18,9 @@
         "slim/psr7": "dev-master",
         "laminas/laminas-diactoros": "^2.1@dev",
         "slim/twig-view": "3.x-dev",
-        "php-di/php-di": "dev-master"
+        "php-di/php-di": "dev-master",
+        "nesbot/carbon": "^2.0@dev",
+        "phplucidframe/console-table": "dev-master"
     },
     "autoload": {
         "psr-4": {
