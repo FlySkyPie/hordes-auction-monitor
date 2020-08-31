@@ -26,10 +26,6 @@ $t0RuneDatas = $database->select('items', $fields, [
     ],
 ]);
 
-//test=============
-
-//print('original count: ' . count($t0RuneDatas) . "\n");
-
 //get batchs
 $resultBatchs = $database->select('items', ['batch_id', 'batched_at'], [
     'GROUP' => 'batch_id',
@@ -74,7 +70,6 @@ foreach ($t0RuneDatas as $key => &$data) {
             'batch_id' => $data['expired_after_batch'],
         ],
     ]);
-    //var_dump($result);
 
     //normal expired
     if (!empty($result)) {
@@ -87,8 +82,6 @@ function comparator($data1, $data2)
 {
     return $data1['unit_price'] > $data2['unit_price'];
 }
-
-//print('processed count: ' . count($t0RuneDatas) . "\n");
 
 foreach ($t0RuneDatas as $key => $data) {
     $t0RuneDatas[$key]['unit_price'] = $data['price'] / $data['amount'];
@@ -107,21 +100,10 @@ foreach ($t0RuneDatas as $data) {
     }
 }
 
-function printStatistic($tradingVolumes)
-{
-    foreach ($tradingVolumes as $key => $tradingVolume) {
-        print(str_pad($key, 5, " "));
-    }
-
-    foreach ($tradingVolumes as $key => $tradingVolume) {
-        print(str_pad($tradingVolume, 5, " "));
-    }
-}
-
-$statisticString = "\n"
-. "From " . $batchs[1]->toIso8601ZuluString()
-. " to " . $batchs[count($batchs)]->toIso8601ZuluString() . ".\n"
-    . 'There\'re ' . $tradingVolumeTotal . ' T1 rune had traded totally.' . "\n";
+$statisticString = "\n" .
+"From " . $batchs[1]->toIso8601ZuluString() .
+" to " . $batchs[count($batchs)]->toIso8601ZuluString() . ".\n" .
+    'There\'re ' . $tradingVolumeTotal . ' T1 rune had traded totally.' . "\n";
 print($statisticString);
 $headers = [];
 $rows = [];
@@ -150,28 +132,3 @@ for ($i = 0; $i < $rowCount; $i++) {
 }
 $table->display();
 print("\n");
-//printStatistic($tradingVolumes);
-
-/*
-foreach($tradingVolumes as $key=> $tradingVolume){
-$rowString = $key . ': ' . $tradingVolume . "\n";
-print($rowString);
-}*/
-
-//ksort($tradingVolumes);
-//var_dump($tradingVolumes);
-
-//var_dump($t0RuneDatas);
-/*
-var_dump(Carbon::now());
-
-$data = $datas[0];
-$datetimeFormat = 'Y-m-d\TH:i:s.v\Z';
-
-print('original datetime: ' . $data['expired_at'] . "\n");
-
-$newDatetime = Carbon::parse($data['expired_at']);
-$data['expired_at'] = $newDatetime;
-
-var_dump($data);
- */
