@@ -36,12 +36,12 @@ $app = AppFactory::create();
 $app->post('/stack', function (Request $request, Response $response) use (
     $database
 ) {
-    $body =  $request->getBody();;
+    $body = $request->getBody();;
     //error_log($body);
     try {
         $transformer = new ItemTransformer();
         $json = json_decode($body, true);
-        
+
         //error_log(var_export($json ));
 
         foreach ($json as $itemData) {
@@ -53,7 +53,7 @@ $app->post('/stack', function (Request $request, Response $response) use (
             $itemData['upgrade'];
             $itemData['attributes'];
             $itemData['posted_by'];
-            $itemData['posted_at'];
+            $itemData['expired_at'];
 
             $itemAttributes = $transformer->transformAttributes($itemData['attributes']);
             unset($itemData['attributes']);
@@ -75,12 +75,27 @@ $app->post('/stack', function (Request $request, Response $response) use (
 $app->post('/save', function (Request $request, Response $response) use (
     $database
 ) {
-    //TODO: move datas from buffer to items.
+    $result = $database->max('items', 'batch_id');
+    $batchId = is_null($result) ? 1 : $result + 1;
+
+    $datas = $database->select('buffer', "*");
+    $itemIds = [];
+    foreach ($datas as $data) {
+        if(in_array($data['item_id'],$itemIds)){
+            continue;
+        }
+        $itemIds[] = $data['item_id'];
+
+        unset($data['id']);
+        $data['batch_id'] = $batchId;
+        $data['batched_at'] = gmdate('Y-m-d\TH:i:s\Z');
+        $database->insert('items', $data);
+    }
 
     //clear table of buffer
 
     $database->delete('buffer', []);
-    $database->delete('sqlite_sequence', ['name', 'buffer']);
+    $database->delete('sqlite_sequence', ['name' => 'buffer']);
 
     $response->getBody()->write('Successful saved!');
     return $response->withStatus(200)->withHeader('Content-Type', 'text/html');
