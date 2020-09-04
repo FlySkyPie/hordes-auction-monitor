@@ -146,7 +146,11 @@ class EquipmentAtrribueRule {
             }
         }
     }
-}
 
-let rule = new EquipmentAtrribueRule();
-console.log(JSON.stringify(rule.rules) );
+    getRules(){
+        return this.rules;
+    }
+}
+// for test
+//let rule = new EquipmentAtrribueRule();
+//console.log(JSON.stringify(rule.rules) );
