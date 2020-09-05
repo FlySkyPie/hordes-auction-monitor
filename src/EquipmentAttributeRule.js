@@ -5,6 +5,7 @@ export class EquipmentAttributeRule {
             hammer: {
                 baselvl: 0,
                 tiers: 17,
+                weight: 1,
                 stats: [
                     { id: 10, base: 1, min: .6, max: 1 },
                     { id: 11, base: 3, min: .8, max: 1.7 },
@@ -13,6 +14,7 @@ export class EquipmentAttributeRule {
             bow: {
                 baselvl: 0,
                 tiers: 17,
+                weight: 1,
                 stats: [
                     { id: 10, base: 1, min: .6, max: 1 },
                     { id: 11, base: 3, min: .8, max: 1.7 },
@@ -21,6 +23,7 @@ export class EquipmentAttributeRule {
             staff: {
                 baselvl: 0,
                 tiers: 17,
+                weight: 1,
                 stats: [
                     { id: 10, base: 1, min: .6, max: 1 },
                     { id: 11, base: 3, min: .8, max: 1.7 },
@@ -29,6 +32,7 @@ export class EquipmentAttributeRule {
             sword: {
                 baselvl: 0,
                 tiers: 17,
+                weight: 1,
                 stats: [
                     { id: 10, base: 1, min: .6, max: 1 },
                     { id: 11, base: 3, min: .8, max: 1.7 },
@@ -37,6 +41,7 @@ export class EquipmentAttributeRule {
             armlet: {
                 baselvl: 1,
                 tiers: 13,
+                weight: .3,
                 stats: [
                     { id: 6, base: 10, min: .5, max: .9 },
                     { id: 12, base: 7, min: .5, max: .8 }]
@@ -44,6 +49,7 @@ export class EquipmentAttributeRule {
             armor: {
                 baselvl: 2,
                 tiers: 11,
+                weight: 1,
                 stats: [
                     { id: 6, base: 20, min: 1, max: 2 },
                     { id: 12, base: 10, min: 1.4, max: 2.8 }
@@ -52,12 +58,14 @@ export class EquipmentAttributeRule {
             bag: {
                 baselvl: 5,
                 tiers: 5,
+                weight: .1,
                 stats: [
                     { id: 19, base: 1, min: .1, max: .3 }]
             },
             boot: {
                 baselvl: 2,
                 tiers: 13,
+                weight: .4,
                 stats: [
                     { id: 6, base: 10, min: .6, max: 1 },
                     { id: 12, base: 8, min: .6, max: 1.1 },
@@ -66,6 +74,7 @@ export class EquipmentAttributeRule {
             glove: {
                 baselvl: 2,
                 tiers: 13,
+                weight: .4,
                 stats: [
                     { id: 6, base: 10, min: .6, max: 1 },
                     { id: 12, base: 8, min: .7, max: 1.1 },
@@ -74,6 +83,7 @@ export class EquipmentAttributeRule {
             ring: {
                 baselvl: 5,
                 tiers: 12,
+                weight: .2,
                 stats: [
                     { id: 6, base: 10, min: .5, max: .9 },
                     { id: 7, base: 5, min: .6, max: 1 }]
@@ -81,6 +91,7 @@ export class EquipmentAttributeRule {
             amulet: {
                 baselvl: 7,
                 tiers: 12,
+                weight: .3,
                 stats:
                     [
                         { id: 7, base: 10, min: 1, max: 1.8 },
@@ -89,6 +100,7 @@ export class EquipmentAttributeRule {
             quiver: {
                 baselvl: 2,
                 tiers: 10,
+                weight: .5,
                 stats:
                     [{ id: 9, base: 1, min: .1, max: .3 },
                         { id: 14, base: 5, min: .1, max: .9 }]
@@ -96,6 +108,7 @@ export class EquipmentAttributeRule {
             shield: {
                 baselvl: 2,
                 tiers: 10,
+                weight: .5,
                 stats:
                     [
                         { id: 12, base: 20, min: .8, max: 1.4 },
@@ -104,6 +117,7 @@ export class EquipmentAttributeRule {
             totem: {
                 baselvl: 2,
                 tiers: 10,
+                weight: .5,
                 stats:
                     [
                         { id: 9, base: 1, min: .1, max: .4 },
@@ -112,6 +126,7 @@ export class EquipmentAttributeRule {
             orb: {
                 baselvl: 2,
                 tiers: 10,
+                weight: .5,
                 stats:
                     [
                         { id: 3, base: 10, min: .3, max: .8 },
@@ -151,6 +166,12 @@ export class EquipmentAttributeRule {
 
     getRules() {
         return this.rules;
+    }
+
+    getRule(equipmentId){
+        let obj = Object.assign({}, this.rules[equipmentId]);
+        obj.weight = this.attributeFactors[obj.type].weight;
+        return obj;
     }
 
     isEquipment(type) {

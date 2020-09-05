@@ -13,11 +13,12 @@ describe('test EquipmentAttributeRule', function () {
     })
 
     test('test rule of T5 amulet', () => {
-        let rules = theRule.getRules();
-        expect(rules['amulet5'].level).toBe(48);
-        expect(rules['amulet5'].stats[0].id).toBe(7);
-        expect(rules['amulet5'].stats[0].min).toBeCloseTo(58);
-        expect(rules['amulet5'].stats[0].max).toBeCloseTo(114.4);
+        let rule = theRule.getRule('amulet5');
+        expect(rule.level).toBe(48);
+        expect(rule.weight).toBeCloseTo(0.3);
+        expect(rule.stats[0].id).toBe(7);
+        expect(rule.stats[0].min).toBeCloseTo(58);
+        expect(rule.stats[0].max).toBeCloseTo(114.4);
     })
 
     test('test rule of T5 armlet', () => {
