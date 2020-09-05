@@ -1,4 +1,4 @@
-class EquipmentAtrribueRule {
+export class EquipmentAttributeRule {
 
     constructor() {
         this.attributeFactors = {
@@ -39,14 +39,15 @@ class EquipmentAtrribueRule {
                 tiers: 13,
                 stats: [
                     { id: 6, base: 10, min: .5, max: .9 },
-                    { id: 12, base: 7, min: .5, max: .9 }]
+                    { id: 12, base: 7, min: .5, max: .8 }]
             },
             armor: {
                 baselvl: 2,
                 tiers: 11,
                 stats: [
-                    { id: 12, base: 10, min: 1.5, max: 3 },
-                    { id: 6, base: 20, min: 1, max: 2 }]
+                    { id: 6, base: 20, min: 1, max: 2 },
+                    { id: 12, base: 10, min: 1.4, max: 2.8 }
+                ]
             },
             bag: {
                 baselvl: 5,
@@ -59,7 +60,7 @@ class EquipmentAtrribueRule {
                 tiers: 13,
                 stats: [
                     { id: 6, base: 10, min: .6, max: 1 },
-                    { id: 12, base: 8, min: .6, max: 1.2 },
+                    { id: 12, base: 8, min: .6, max: 1.1 },
                     { id: 15, base: 3, min: .03, max: .1 }]
             },
             glove: {
@@ -67,7 +68,7 @@ class EquipmentAtrribueRule {
                 tiers: 13,
                 stats: [
                     { id: 6, base: 10, min: .6, max: 1 },
-                    { id: 12, base: 8, min: .7, max: 1.2 },
+                    { id: 12, base: 8, min: .7, max: 1.1 },
                     { id: 14, base: 1, min: .1, max: 1.5 }]
             },
             ring: {
@@ -89,23 +90,24 @@ class EquipmentAtrribueRule {
                 baselvl: 2,
                 tiers: 10,
                 stats:
-                    [{ id: 14, base: 2, min: .1, max: .5 }]
+                    [{ id: 9, base: 1, min: .1, max: .3 },
+                        { id: 14, base: 5, min: .1, max: .9 }]
             },
             shield: {
                 baselvl: 2,
                 tiers: 10,
                 stats:
                     [
-                        { id: 12, base: 20, min: .9, max: 1.5 },
-                        { id: 13, base: 4, min: 1, max: 3 }]
+                        { id: 12, base: 20, min: .8, max: 1.4 },
+                        { id: 13, base: 4, min: 1, max: 2.8 }]
             },
             totem: {
                 baselvl: 2,
                 tiers: 10,
                 stats:
                     [
-                        { id: 12, base: 10, min: .3, max: .8 },
-                        { id: 9, base: 1, min: .1, max: .2 }]
+                        { id: 9, base: 1, min: .1, max: .4 },
+                        { id: 12, base: 10, min: .4, max: .9 }]
             },
             orb: {
                 baselvl: 2,
@@ -139,7 +141,7 @@ class EquipmentAtrribueRule {
                 let obj = {
                     type: eqipmentType,
                     tier: tier,
-                    stats: stats ,
+                    stats: stats,
                     level: itemLevel,
                 };
                 this.rules[obj.type + obj.tier] = obj;
@@ -147,8 +149,17 @@ class EquipmentAtrribueRule {
         }
     }
 
-    getRules(){
+    getRules() {
         return this.rules;
+    }
+
+    isEquipment(type) {
+        for (let equipmentType in this.attributeFactors) {
+            if (type === equipmentType) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 // for test
