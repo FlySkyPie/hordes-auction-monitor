@@ -22,114 +22,128 @@ describe('test EquipmentAttributeRule', function () {
     })
 
     test('test rule of T5 armlet', () => {
-        let rules = theRule.getRules();
-        expect(rules['armlet5'].level).toBe(39);
-        expect(rules['armlet5'].stats[0].id).toBe(6);
-        expect(rules['armlet5'].stats[0].min).toBeCloseTo(29.5);
-        expect(rules['armlet5'].stats[0].max).toBeCloseTo(54.1);
+        let rule = theRule.getRule('armlet5');
+        expect(rule.level).toBe(39);
+        expect(rule.weight).toBeCloseTo(0.3);
+        expect(rule.stats[0].id).toBe(6);
+        expect(rule.stats[0].min).toBeCloseTo(29.5);
+        expect(rule.stats[0].max).toBeCloseTo(54.1);
     })
 
     test('test rule of T5 armor', () => {
-        let rules = theRule.getRules();
-        expect(rules['armor5'].level).toBe(47);
-        expect(rules['armor5'].stats[0].id).toBe(6);
-        expect(rules['armor5'].stats[0].min).toBeCloseTo(67);
-        expect(rules['armor5'].stats[0].max).toBeCloseTo(134);
+        let rule = theRule.getRule('armor5');
+        expect(rule.level).toBe(47);
+        expect(rule.weight).toBeCloseTo(1);
+        expect(rule.stats[0].id).toBe(6);
+        expect(rule.stats[0].min).toBeCloseTo(67);
+        expect(rule.stats[0].max).toBeCloseTo(134);
     })
 
     test('test rule of T4 bag', () => {
-        let rules = theRule.getRules();
-        expect(rules['bag4'].level).toBe(85);
-        expect(rules['bag4'].stats[0].id).toBe(19);
-        expect(rules['bag4'].stats[0].min).toBeCloseTo(9.5);
-        expect(rules['bag4'].stats[0].max).toBeCloseTo(29.5);
+        let rule = theRule.getRule('bag4');
+        expect(rule.level).toBe(85);
+        expect(rule.weight).toBeCloseTo(0.1);
+        expect(rule.stats[0].id).toBe(19);
+        expect(rule.stats[0].min).toBeCloseTo(9.5);
+        expect(rule.stats[0].max).toBeCloseTo(29.5);
     })
 
     test('test rule of T5 boot', () => {
-        let rules = theRule.getRules();
-        expect(rules['boot5'].level).toBe(40);
-        expect(rules['boot5'].stats[1].id).toBe(12);
-        expect(rules['boot5'].stats[1].min).toBeCloseTo(32);
-        expect(rules['boot5'].stats[1].max).toBeCloseTo(63);
+        let rule = theRule.getRule('boot5');
+        expect(rule.level).toBe(40);
+        expect(rule.weight).toBeCloseTo(0.4);
+        expect(rule.stats[1].id).toBe(12);
+        expect(rule.stats[1].min).toBeCloseTo(32);
+        expect(rule.stats[1].max).toBeCloseTo(63);
     })
 
     test('test rule of T5 bow', () => {
-        let rules = theRule.getRules();
-        expect(rules['bow5'].level).toBe(29);
-        expect(rules['bow5'].stats[2].id).toBe(17);
-        expect(rules['bow5'].stats[2].min).toBeCloseTo(11.45);
-        expect(rules['bow5'].stats[2].max).toBeCloseTo(13.9);
+        let rule = theRule.getRule('bow5');
+        expect(rule.level).toBe(29);
+        expect(rule.weight).toBeCloseTo(1);
+        expect(rule.stats[2].id).toBe(17);
+        expect(rule.stats[2].min).toBeCloseTo(11.45);
+        expect(rule.stats[2].max).toBeCloseTo(13.9);
     })
 
     test('test rule of T5 glove', () => {
-        let rules = theRule.getRules();
-        expect(rules['glove5'].level).toBe(40);
-        expect(rules['glove5'].stats[2].id).toBe(14);
-        expect(rules['glove5'].stats[2].min).toBeCloseTo(5);
-        expect(rules['glove5'].stats[2].max).toBeCloseTo(76);
+        let rule = theRule.getRule('glove5');
+        expect(rule.level).toBe(40);
+        expect(rule.weight).toBeCloseTo(0.4);
+        expect(rule.stats[2].id).toBe(14);
+        expect(rule.stats[2].min).toBeCloseTo(5);
+        expect(rule.stats[2].max).toBeCloseTo(76);
     })
 
     test('test rule of T5 hammer', () => {
-        let rules = theRule.getRules();
-        expect(rules['hammer5'].level).toBe(29);
-        expect(rules['hammer5'].stats[2].id).toBe(17);
-        expect(rules['hammer5'].stats[2].min).toBeCloseTo(16.45);
-        expect(rules['hammer5'].stats[2].max).toBeCloseTo(18.9);
+        let rule = theRule.getRule('hammer5');
+        expect(rule.level).toBe(29);
+        expect(rule.weight).toBeCloseTo(1);
+        expect(rule.stats[2].id).toBe(17);
+        expect(rule.stats[2].min).toBeCloseTo(16.45);
+        expect(rule.stats[2].max).toBeCloseTo(18.9);
     })
 
     test('test rule of T5 orb', () => {
-        let rules = theRule.getRules();
-        expect(rules['orb5'].level).toBe(52);
-        expect(rules['orb5'].stats[1].id).toBe(9);
-        expect(rules['orb5'].stats[1].min).toBeCloseTo(6.2);
-        expect(rules['orb5'].stats[1].max).toBeCloseTo(19.6);
+        let rule = theRule.getRule('orb5');
+        expect(rule.level).toBe(52);
+        expect(rule.weight).toBeCloseTo(0.5);
+        expect(rule.stats[1].id).toBe(9);
+        expect(rule.stats[1].min).toBeCloseTo(6.2);
+        expect(rule.stats[1].max).toBeCloseTo(19.6);
     })
 
     test('test rule of T5 quiver', () => {
-        let rules = theRule.getRules();
-        expect(rules['quiver5'].level).toBe(52);
-        expect(rules['quiver5'].stats[1].id).toBe(14);
-        expect(rules['quiver5'].stats[1].min).toBeCloseTo(10.2);
-        expect(rules['quiver5'].stats[1].max).toBeCloseTo(60.8);
+        let rule = theRule.getRule('quiver5');
+        expect(rule.level).toBe(52);
+        expect(rule.weight).toBeCloseTo(0.5);
+        expect(rule.stats[1].id).toBe(14);
+        expect(rule.stats[1].min).toBeCloseTo(10.2);
+        expect(rule.stats[1].max).toBeCloseTo(60.8);
     })
 
     test('test rule of T5 ring', () => {
-        let rules = theRule.getRules();
-        expect(rules['ring5'].level).toBe(46);
-        expect(rules['ring5'].stats[1].id).toBe(7);
-        expect(rules['ring5'].stats[1].min).toBeCloseTo(32.6);
-        expect(rules['ring5'].stats[1].max).toBeCloseTo(61);
+        let rule = theRule.getRule('ring5');
+        expect(rule.level).toBe(46);
+        expect(rule.weight).toBeCloseTo(0.2);
+        expect(rule.stats[1].id).toBe(7);
+        expect(rule.stats[1].min).toBeCloseTo(32.6);
+        expect(rule.stats[1].max).toBeCloseTo(61);
     })
 
     test('test rule of T5 shield', () => {
-        let rules = theRule.getRules();
-        expect(rules['shield5'].level).toBe(52);
-        expect(rules['shield5'].stats[0].id).toBe(12);
-        expect(rules['shield5'].stats[0].min).toBeCloseTo(61.6);
-        expect(rules['shield5'].stats[0].max).toBeCloseTo(106.8);
+        let rule = theRule.getRule('shield5');
+        expect(rule.level).toBe(52);
+        expect(rule.weight).toBeCloseTo(0.5);
+        expect(rule.stats[0].id).toBe(12);
+        expect(rule.stats[0].min).toBeCloseTo(61.6);
+        expect(rule.stats[0].max).toBeCloseTo(106.8);
     })
 
     test('test rule of T5 staff', () => {
-        let rules = theRule.getRules();
-        expect(rules['staff5'].level).toBe(29);
-        expect(rules['staff5'].stats[1].id).toBe(11);
-        expect(rules['staff5'].stats[1].min).toBeCloseTo(26.2);
-        expect(rules['staff5'].stats[1].max).toBeCloseTo(69.3);
+        let rule = theRule.getRule('staff5');
+        expect(rule.level).toBe(29);
+        expect(rule.weight).toBeCloseTo(1);
+        expect(rule.stats[1].id).toBe(11);
+        expect(rule.stats[1].min).toBeCloseTo(26.2);
+        expect(rule.stats[1].max).toBeCloseTo(69.3);
     })
 
     test('test rule of T5 sword', () => {
-        let rules = theRule.getRules();
-        expect(rules['sword5'].level).toBe(29);
-        expect(rules['sword5'].stats[2].id).toBe(17);
-        expect(rules['sword5'].stats[2].min).toBeCloseTo(21.45);
-        expect(rules['sword5'].stats[2].max).toBeCloseTo(23.9);
+        let rule = theRule.getRule('sword5');
+        expect(rule.level).toBe(29);
+        expect(rule.weight).toBeCloseTo(1);
+        expect(rule.stats[2].id).toBe(17);
+        expect(rule.stats[2].min).toBeCloseTo(21.45);
+        expect(rule.stats[2].max).toBeCloseTo(23.9);
     })
 
     test('test rule of T5 totem', () => {
-        let rules = theRule.getRules();
-        expect(rules['totem5'].level).toBe(52);
-        expect(rules['totem5'].stats[0].id).toBe(9);
-        expect(rules['totem5'].stats[0].min).toBeCloseTo(6.2);
-        expect(rules['totem5'].stats[0].max).toBeCloseTo(25.8);
+        let rule = theRule.getRule('totem5');
+        expect(rule.level).toBe(52);
+        expect(rule.weight).toBeCloseTo(0.5);
+        expect(rule.stats[0].id).toBe(9);
+        expect(rule.stats[0].min).toBeCloseTo(6.2);
+        expect(rule.stats[0].max).toBeCloseTo(25.8);
     })
 }) 
