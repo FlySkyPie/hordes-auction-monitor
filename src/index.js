@@ -1,3 +1,20 @@
+//https://stackoverflow.com/questions/44728723
+var originalFetch = fetch;
+fetch = (input, init) => {
+    return originalFetch(input, init).then(response => {
+        // it is not important to create new Promise in ctor, we can await existing one, then wrap result into new one
+        return new Promise((resolve) => {
+            if( input === '/api/item/get' &&JSON.parse(init.body).hasOwnProperty('auction')){
+                response.clone().json().then(json=>{
+                    console.log(JSON.stringify(json));
+                })
+                console.log('Hook the fetch!');
+            }
+            resolve(response);
+        });
+    });
+};
+
 !function () {
     let isAdded = false;
     function createNavButton() {
