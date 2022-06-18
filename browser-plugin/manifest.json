@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Hordes.io Mixer",
+  "version": "0.1.0",
+
+  "description": "Redirect client.js request to proxy server.",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+    "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://hordes.io/"
+  ],
+    "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*"],
+      "js": ["bootstrap.js"]
+    }
+  ],
+  
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
