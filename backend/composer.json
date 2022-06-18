@@ -1,0 +1,30 @@
+{
+    "name": "flyskypie/simple-merchant-statistics",
+    "description": "The data server for make statistics of merchant from Hordes.io .",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "FlySkyPie(Wei Ji)",
+            "email": "c445dj544@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "slim/slim": "4.*",
+        "catfan/medoo": "dev-master",
+        "nyholm/psr7": "^1.0@dev",
+        "nyholm/psr7-server": "dev-master",
+        "slim/psr7": "dev-master",
+        "laminas/laminas-diactoros": "^2.1@dev",
+        "slim/twig-view": "3.x-dev",
+        "php-di/php-di": "dev-master",
+        "nesbot/carbon": "^2.0@dev",
+        "phplucidframe/console-table": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Transformer\\": "transformer/"
+        }
+    }
+}
